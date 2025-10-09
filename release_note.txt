@@ -1,0 +1,38 @@
+Zmiany w wersjach:
+
+1.3
+-wlaczenie resetu przez LS2020
+
+1.2
+-po 5 sekundach bezczynności przy trybie kopiowania z karty SD program przechodzi automatycznie do uruchomienia się
+-poprawienie warunku sprawdzania przycisków przy uruchamianiu 
+
+1.0.3
+-poprawa graficzna wyswietlania kilku napisów
+-poprawa opisow usterek E...
+-LANG_HIDDEN poprawnie wyswietla naprzemiennie E oraz piętro
+-usunięcie bootloadera
+
+
+1.0.2
+-Naprawa wyświetlania napisów
+-Dodanie trybu pracy jako piętrowskazywacz kabinowy - 0 w numerze przystanku
+-Dodanie jezyka "0"
+-Możliwość zmiany języka przez LiftCAN (0,PL,EN, w przypadku innej liczby nic się nie zmienia)
+-Naprawa zawieszania się rdzenia po otrzymaniu niektórych ramek CAN (zmiana kolejności tablic w pamięci - mała ilość pozostałej wolnej pamięci NIE ZMIENIAC ANI NIE DODAWAC KOLEJNYCH FUNKCJONALNOSCI)
+
+
+1.0.1
+-Po 20 sekundach, menu jest automatycznie zamykane w przypadku bezczynnosci
+-Regulacja jasnosci TFT przez LiftCAN
+-Wlaczenie/wylaczenie buzzera przez LiftCAN
+-Uruchomiono EXT XTAL
+-Suma CRC obliczona i zapisana w EEPROM jest wyswietlana podczas inicjalizacji wyswietlacza
+-Wygaszenie wyświetlacza w przypadku wygaszenie oświetlenia kabiny, wymagane ustawienie w LS2020 par 14 = 000001000;
+-Usterka wyświetlana jest w czasie przewijana, po czasie przewijania wyswietlane jest na 1s nr pietra
+-Dlugie komuniakty sa przewijane, nie ma komuniaktow dwuliniowych
+-Dodano licznik bledow magistrali CAN, wyswietlany w menu 
+-Zmiana FAT_FS na Tiny=0 oraz _FS_MINIMIZE = 3 w ffconf.h
+
+1.0 
+-Pierwsza wersja na spotkanie demonstracyjne 17.01.2025
