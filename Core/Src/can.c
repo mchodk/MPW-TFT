@@ -226,7 +226,7 @@ uint8_t liftcanParser (uint8_t canDLC, uint8_t canByte0, uint8_t canByte1, uint8
 			if ((global.CanByteSeg1 < FLOOR_CODE) && (global.CanByteSeg2 < DETECT_LS2020_FAIL))
 				global.CanByteSeg3 = global.CanByteSeg1; /*W przypadku wystapienia usterki dxiwgu, CanByteSeg3 przechowuje ostatnia pozycje dzwigu*/
 
-			if(canByte0 == 113) //ramka B0: 113 - jazda specjalna
+			if(canByte0 == 113) //specjalny przypadek ramka B0: 113 - jazda specjalna
 				expresstravel = ACTIVE;
 			if(expresstravel > 0 && canByte0 != 113) // kazda inna ramka z pietrem lub bledem
 				expresstravel--;

@@ -811,9 +811,11 @@ int main(void)
 	  liftCanAdress.TxAdress |= 0x20;
 
   updateParamValue();
-  HAL_Delay(100 + ((liftCanAdress.TxAdress & 0x1F) << 2)); //jakis randomowy delay
+  //HAL_Delay(100 + ((liftCanAdress.TxAdress & 0x1F) << 2)); //jakis randomowy delay
 
   setupCANFilter(liftCanAdress.TxAdress);
+
+  HAL_Delay(100 + ((liftCanAdress.TxAdress & 0x1F) << 2));
 
   hearthBeatTime = HEARTHBEAT_CAN;
   buttons.debounceMs = DEBOUNCE_MS;
@@ -823,14 +825,15 @@ int main(void)
   	  HAL_IWDG_Init(&hiwdg);
 	#endif
 
-  sendCanFrame(DIAGNOSTIC_DATA, ONE_BYTE, 0x86, 0, 0, 0);
+  	sendCanFrame(DIAGNOSTIC_DATA, ONE_BYTE, 0x86, 0, 0, 0);
 
-  HAL_Delay(100);
+  //HAL_Delay(100);
 
   if((CAN->ESR >> 16) & 0xFF) /*DETEKCJA KOMUNIKACJI LIFTCAN PRZEZ LICZNIK BLEDOW TEC*/
 	  global.CanByteSeg1 = BRAK_LIFTCAN /*KOD_BRAK_LIFTCAN*/;
   else
 	  global.CanByteSeg1 = 100 /*KOD_DZWIG_NIECZYNNY*/;
+
 
   /* USER CODE END 2 */
 
@@ -914,12 +917,20 @@ int main(void)
 
 	  stepGong = playGongFn(stepGong);
 
-	  if((firstRun < 10) && global.CanByteSeg2 != 100) /*dodatkowe wysylanie ramki statusu*/
+	  //if((firstRun < 10) && global.CanByteSeg2 != 100) /*dodatkowe wysylanie ramki statusu*/
+	  //{
+		  //sendCanFrame(DIAGNOSTIC_DATA, ONE_BYTE, 0x86, 0, 0, 0);
+		  //HAL_Delay(1);
+		  //firstRun++;
+
+	  //}
+
+	  /*if((firstRun == true) && global.CanByteSeg2 != 100)
 	  {
+		  HAL_Delay(100 + ((liftCanAdress.TxAdress & 0x1F) << 2));
 		  sendCanFrame(DIAGNOSTIC_DATA, ONE_BYTE, 0x86, 0, 0, 0);
-		  HAL_Delay(1);
-		  firstRun++;
-	  }
+		  firstRun=false;
+	  }*/
 
 	  if(global.displayOff == true && displayShutdown == false)
 	  {
